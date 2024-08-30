@@ -23,11 +23,11 @@ class Timer {
       this.setDuration();
       this.runTimer();
       console.log(this.TimeRemaininig);
-      this.onChange(this.TimeRemaininig);
+      this.onChange({ time: this.TimeRemaininig });
     } else {
       this.runTimer();
       console.log(this.TimeRemaininig);
-      this.onChange(this.TimeRemaininig);
+      this.onChange({ time: this.TimeRemaininig });
     }
     this.isRunning = true;
     this.setStartAndPauseBtnState();
@@ -57,20 +57,23 @@ class Timer {
     this.isRunning = true;
     this.interval = setInterval(() => {
       this.emitTick();
-      this.onChange(this.TimeRemaininig);
+      this.onChange({ time: this.TimeRemaininig });
     }, 1000);
   }
 
   setDuration = () => {
     if (!(this.durationInput.value <= 0)) {
       this.TimeRemaininig = this.durationInput.value;
-      this.onStart(
-        `Timer started for ${this.durationInput.value} seconds`,
-        "message"
-      );
+      this.onStart({
+        message: `Timer started for ${this.durationInput.value} seconds`,
+        type: "message",
+      });
       return;
     }
-    this.onStart("Please enter a number to start timer.", "error");
+    this.onStart({
+      message: "Please enter a number to start timer.",
+      type: "error",
+    });
   };
 
   emitTick() {

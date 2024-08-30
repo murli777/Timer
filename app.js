@@ -5,17 +5,18 @@ const reset = document.querySelector("#reset");
 const toast = document.querySelector("#toast");
 
 const timer = new Timer(durationInput, start, pause, reset, {
-  onStart(message, type, time) {
-    handleMessages(message, type, toast);
-    clearState();
-    driver(time);
+  onStart(args) {
+    handleMessages(args, toast);
+    // console.log(time);
   },
-  onChange(time) {
-    driver(time);
+  onChange(args) {
+    clearState();
+    driver(args);
   },
 });
 
-handleMessages = (message, type, element) => {
+handleMessages = (args, element) => {
+  const { message, type } = args;
   clearTimeout(this.toastTimeOut);
   element.className = "toast";
   element.textContent = message;

@@ -18,11 +18,12 @@ function clearState() {
   });
 }
 
-function driver(num) {
+function driver(args) {
+  const { time } = args;
   clearState();
 
-  const segments = segment_array[num];
-  console.log(segments);
+  const segments = segment_array[time];
+  // console.log(segments);
 
   segments.forEach((segment) => {
     const segmentElement = document.querySelector(`#seg_${segment}`);
