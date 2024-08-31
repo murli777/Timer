@@ -11,19 +11,11 @@ const segment_array = {
   9: ["a", "b", "c", "e", "f", "g"],
 };
 
-function clearState() {
-  const segLitElements = document.querySelectorAll(".segLit");
-  segLitElements.forEach((element) => {
-    element.classList.remove("segLit");
-  });
-}
-
-function driver(args) {
-  const { time } = args;
+function driver({time}) {
+  // const { time } = args;
   clearState();
 
   const segments = segment_array[time];
-  // console.log(segments);
 
   segments.forEach((segment) => {
     const segmentElement = document.querySelector(`#seg_${segment}`);

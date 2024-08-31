@@ -6,23 +6,10 @@ const toast = document.querySelector("#toast");
 
 const timer = new Timer(durationInput, start, pause, reset, {
   onStart(args) {
-    handleMessages(args, toast);
-    // console.log(time);
+    handleMessages(...args, toast);
   },
   onChange(args) {
     clearState();
-    driver(args);
+    driver(...args);
   },
 });
-
-handleMessages = (args, element) => {
-  const { message, type } = args;
-  clearTimeout(this.toastTimeOut);
-  element.className = "toast";
-  element.textContent = message;
-  element.classList.add(type);
-  this.toastTimeOut = setTimeout(() => {
-    element.textContent = "";
-    element.classList.remove(type);
-  }, 5000);
-};
