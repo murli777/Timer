@@ -5,8 +5,7 @@ function clearState() {
   });
 }
 
-handleMessages = ({ message, type }, element) => {
-  // const { message, type } = args;
+function handleMessages(message, type, element) {
   element.className = "toast";
   element.textContent = message;
   element.classList.add(type);
@@ -14,4 +13,20 @@ handleMessages = ({ message, type }, element) => {
     element.textContent = "";
     element.classList.remove(type);
   }, 3000);
-};
+}
+
+function splitTime(time) {
+  const hourMinuteSecond = time.split(":");
+  return hourMinuteSecond;
+}
+
+function converToSeconds(timeInput) {
+  const splittedTime = splitTime(timeInput);
+  console.log("Splitted Time:" + splittedTime);
+
+  const seconds = Number(splittedTime[2]);
+  const minuteToSecond = Number(splittedTime[1] * 60);
+  const hourToSecond = Number(splittedTime[0] * 3600);
+
+  return seconds + minuteToSecond + hourToSecond;
+}
