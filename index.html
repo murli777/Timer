@@ -12,27 +12,19 @@
       type="number"
       name="duration"
       id="duration"
-      placeholder="Duration(seconds)"
+      placeholder="Duration(HH:MM:SS)"
     />
-    <button id="start">Start</button>
+    <button id="start" type="submit">Start</button>
     <button id="pause">Pause</button>
     <button id="reset">Reset</button>
     <div id="toast" class="toast"></div>
 
-    <div id="main-container" class="container">
-      <section class="seven-segment">
-        <div class="segment" id="seg_a"></div>
-        <div class="segment" id="seg_b"></div>
-        <div class="segment" id="seg_c"></div>
-        <div class="segment" id="seg_d"></div>
-        <div class="segment" id="seg_e"></div>
-        <div class="segment" id="seg_f"></div>
-        <div class="segment" id="seg_g"></div>
-      </section>
-    </div>
-    <script src="timer.js"></script>
+    <div id="main-container" class="container"></div>
+    <script src="Digit.js"></script>
+    <script src="Timer.js"></script>
     <script src="helpers.js"></script>
     <script src="driver.js"></script>
+    <script src="callbackEvents.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

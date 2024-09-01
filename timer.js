@@ -15,20 +15,16 @@ class Timer {
     if (callbacks) {
       this.onStart = callbacks.onStart;
       this.onChange = callbacks.onChange;
+      this.onReset = callbacks.onReset;
     }
   }
 
   startTimer = () => {
     if (!this.TimeRemaininig) {
       this.setDuration();
-      this.runTimer();
-      console.log(this.TimeRemaininig);
-      this.onChange({ time: this.TimeRemaininig });
-    } else {
-      this.runTimer();
-      console.log(this.TimeRemaininig);
-      this.onChange({ time: this.TimeRemaininig });
     }
+    this.runTimer();
+    this.onChange({ time: this.TimeRemaininig });
     this.isRunning = true;
     this.setStartAndPauseBtnState();
   };
@@ -51,13 +47,13 @@ class Timer {
     this.TimeRemaininig = 0;
     this.isRunning = false;
     this.setStartAndPauseBtnState();
+    this.onReset();
   };
 
   runTimer() {
     this.isRunning = true;
     this.interval = setInterval(() => {
       this.emitTick();
-      this.onChange({ time: this.TimeRemaininig });
     }, 1000);
   }
 
@@ -81,7 +77,7 @@ class Timer {
       this.pauseTimer();
     } else {
       this.TimeRemaininig--;
-      this.durationInput.value = this.TimeRemaininig;
+      this.onChange({ time: this.TimeRemaininig });
     }
   }
 

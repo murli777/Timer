@@ -4,12 +4,4 @@ const pause = document.querySelector("#pause");
 const reset = document.querySelector("#reset");
 const toast = document.querySelector("#toast");
 
-const timer = new Timer(durationInput, start, pause, reset, {
-  onStart(args) {
-    handleMessages(...args, toast);
-  },
-  onChange(args) {
-    clearState();
-    driver(...args);
-  },
-});
+const timer = new Timer(durationInput, start, pause, reset, callbacks);
