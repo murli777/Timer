@@ -17,23 +17,71 @@
   display: block;
 }
 
-.container {
-  margin-top: 50px;
+body {
+  background-image: url(".\\galaxy.jpg");
+  background-size: cover;
 }
 
-section {
-  width: 50%;
-  float: left;
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  height: fit-content;
+  width: fit-content;
+  border: 1px solid rgb(75, 74, 74);
+  border-radius: 16px;
+  margin: 5rem auto;
+  background-color: rgba(54, 54, 54, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.container {
+  margin-top: 50px;
+  display: flex;
+  gap: 2.25rem;
+  box-sizing: border-box;
+  width: fit-content;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 2rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  margin: 8px auto;
+}
+
+.buttons > * {
+  border: none;
+  background-color: transparent;
+  margin: 1rem 0.75rem;
+  color: white;
+}
+.buttons button:disabled {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hour,
+.minute,
+.second {
+  display: flex;
 }
 
 .seven-segment {
   width: 120px;
   height: 180px;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .segment {
-  border: 10px solid #e4e4e4;
+  border: 10px solid rgba(66, 66, 66, 0.25);
   width: 0;
   height: 46px;
   position: absolute;
@@ -41,7 +89,7 @@ section {
 }
 
 .segLit {
-  border-color: rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255);
 }
 
 .segment::before,
@@ -102,12 +150,6 @@ section {
 .seg_a,
 .seg_b {
   right: 10px;
-}
-
-.seg_c,
-.seg_f,
-.seg_g {
-  left: 32px;
 }
 
 .seg_d,

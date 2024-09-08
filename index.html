@@ -3,27 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="main.css" />
     <title>Timer</title>
   </head>
 
   <body>
-    <input
-      type="number"
-      name="duration"
-      id="duration"
-      placeholder="Duration(HH:MM:SS)"
-    />
-    <button id="start" type="submit">Start</button>
-    <button id="pause">Pause</button>
-    <button id="reset">Reset</button>
-    <div id="toast" class="toast"></div>
+    <div id="main" class="main">
+      <div id="main-container" class="container">
+        <div id="hour" class="hour"></div>
 
-    <div id="main-container" class="container"></div>
+        <div id="minute" class="minute"></div>
+
+        <div id="second" class="second"></div>
+      </div>
+
+      <div class="controls">
+        <input
+          type="text"
+          name="duration"
+          id="duration"
+          placeholder="Duration(HH:MM:SS)"
+        />
+        <div class="buttons">
+          <button id="start" type="submit">
+            <i class="fa-solid fa-play fa-2xl"></i>
+          </button>
+          <button id="pause"><i class="fa-solid fa-pause fa-2xl"></i></button>
+          <button id="reset">
+            <i class="fa-solid fa-arrow-rotate-left fa-2xl"></i>
+          </button>
+        </div>
+        <div id="toast" class="toast"></div>
+      </div>
+    </div>
+
     <script src="Timer.js"></script>
-    <script src="Digit.js"></script>
     <script src="helpers.js"></script>
     <script src="driver.js"></script>
+    <script src="Digit.js"></script>
     <script src="callbackEvents.js"></script>
     <script src="app.js"></script>
   </body>

@@ -11,13 +11,15 @@ const segment_array = {
   9: ["a", "b", "c", "e", "f", "g"],
 };
 
-function driver(time) {
-  clearState();
+function driver(number, unitName) {
+  number = Number(number);
 
-  const segments = segment_array[time];
+  const segments = segment_array[number];
+
+  const element = document.querySelector(`.${unitName}`);
 
   segments.forEach((segment) => {
-    const segmentElement = document.querySelector(`.seg_${segment}`);
+    const segmentElement = element.querySelector(`.seg_${segment}`);
     segmentElement.classList.add("segLit");
   });
 }

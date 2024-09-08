@@ -15,18 +15,39 @@ function handleMessages(message, type, element) {
   }, 3000);
 }
 
-function splitTime(time) {
-  const hourMinuteSecond = time.split(":");
-  return hourMinuteSecond;
+function checkForDigits(number) {
+  if (number <= 0) {
+    return "00";
+  }
+  if (number < 10) {
+    return `0${number}`;
+  }
+  return number;
 }
 
-function converToSeconds(timeInput) {
-  const splittedTime = splitTime(timeInput);
-  console.log("Splitted Time:" + splittedTime);
+function convertFromSeconds(timeInSeconds) {
+  let hours = "00";
+  let minutes = "00";
+  let seconds = "00";
 
-  const seconds = Number(splittedTime[2]);
-  const minuteToSecond = Number(splittedTime[1] * 60);
-  const hourToSecond = Number(splittedTime[0] * 3600);
+  if (timeInSeconds < 60) {
+    seconds = timeInSeconds;
+  } else if (timeInSeconds < 3600 && timeInSeconds > 59) {
+    minutes = Math.floor((timeInSeconds - hours * 3600) / 60);
+    seconds = timeInSeconds - (minutes * 60 + hours * 3600);
+  } else {
+    hours = Math.floor(timeInSeconds / 3600);
+    minutes = Math.floor((timeInSeconds - hours * 3600) / 60);
+    seconds = timeInSeconds - (minutes * 60 + hours * 3600);
+  }
 
-  return seconds + minuteToSecond + hourToSecond;
+  hours = checkForDigits(hours);
+  minutes = checkForDigits(minutes);
+  seconds = checkForDigits(seconds);
+
+  return {
+    hours,
+    minutes,
+    seconds,
+  };
 }

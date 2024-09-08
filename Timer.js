@@ -1,5 +1,5 @@
 class Timer {
-  constructor(durationInput, startBtn, pauseBtn, resetBtn, callbacks) {
+  constructor(durationInput, startBtn, pauseBtn, resetBtn, timerCallbacks) {
     this.durationInput = durationInput;
     this.startBtn = startBtn;
     this.pauseBtn = pauseBtn;
@@ -12,10 +12,10 @@ class Timer {
     this.pauseBtn.addEventListener("click", this.pauseTimer);
     this.resetBtn.addEventListener("click", this.resetTimer);
 
-    if (callbacks) {
-      this.onStart = callbacks.onStart;
-      this.onChange = callbacks.onChange;
-      this.onReset = callbacks.onReset;
+    if (timerCallbacks) {
+      this.onStart = timerCallbacks.onStart;
+      this.onTick = timerCallbacks.onTick;
+      this.onReset = timerCallbacks.onReset;
     }
   }
 
@@ -24,7 +24,7 @@ class Timer {
       this.setDuration();
     }
     this.runTimer();
-    this.onChange({ time: this.TimeRemaininig });
+    this.onTick({ time: this.TimeRemaininig });
     this.isRunning = true;
     this.setStartAndPauseBtnState();
   };
@@ -58,18 +58,14 @@ class Timer {
   }
 
   setDuration = () => {
-    if (!(this.durationInput.value <= 0)) {
-      this.TimeRemaininig = this.durationInput.value;
+    if (!this.durationInput.value) {
       this.onStart({
-        message: `Timer started for ${this.durationInput.value} seconds`,
-        type: "message",
+        message: "Please enter a number to start timer.",
+        type: "error",
       });
-      return;
+    } else {
+      this.converToSeconds(this.durationInput.value);
     }
-    this.onStart({
-      message: "Please enter a number to start timer.",
-      type: "error",
-    });
   };
 
   emitTick() {
@@ -77,12 +73,28 @@ class Timer {
       this.pauseTimer();
     } else {
       this.TimeRemaininig--;
-      this.onChange({ time: this.TimeRemaininig });
+      this.onTick({ time: this.TimeRemaininig });
     }
   }
 
   setStartAndPauseBtnState() {
     this.startBtn.disabled = this.isRunning;
     this.pauseBtn.disabled = !this.isRunning;
+  }
+
+  splitTime(time) {
+    const hourMinuteSecond = time.split(":");
+    return hourMinuteSecond;
+  }
+
+  converToSeconds(timeInput) {
+    const splittedTime = this.splitTime(timeInput);
+    console.log("Splitted Time:" + splittedTime);
+
+    const seconds = Number(splittedTime[2]);
+    const minuteToSecond = Number(splittedTime[1] * 60);
+    const hourToSecond = Number(splittedTime[0] * 3600);
+
+    this.TimeRemaininig = seconds + minuteToSecond + hourToSecond;
   }
 }

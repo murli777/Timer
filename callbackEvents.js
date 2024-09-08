@@ -1,10 +1,11 @@
-const callbacks = {
+const timerCallbacks = {
   onStart({ message, type }) {
     handleMessages(message, type, toast);
+    // convertFromSeconds(time);
   },
-  onChange({ time }) {
+  onTick({ time }) {
     clearState();
-    driver(time);
+    driveDigits(time);
   },
   onReset() {
     clearState();
