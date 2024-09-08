@@ -9,6 +9,7 @@
   background-color: rgb(216, 112, 112);
   color: beige;
   display: block;
+  margin: auto;
 }
 
 .message {
@@ -27,9 +28,8 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-  height: fit-content;
   width: fit-content;
-  border: 1px solid rgb(75, 74, 74);
+  border: 2px solid rgba(75, 74, 74, 0.75);
   border-radius: 16px;
   margin: 5rem auto;
   background-color: rgba(54, 54, 54, 0.25);
@@ -41,19 +41,14 @@ body {
   display: flex;
   gap: 2.25rem;
   box-sizing: border-box;
-  width: fit-content;
   align-items: center;
   margin: 1rem auto;
   padding: 2rem;
 }
 
-.controls {
-  display: flex;
-  flex-direction: column;
-}
-
 .buttons {
-  margin: 8px auto;
+  width: fit-content;
+  margin: 1rem auto;
 }
 
 .buttons > * {
@@ -64,6 +59,16 @@ body {
 }
 .buttons button:disabled {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.controls input {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  width: 15rem;
+  height: 32px;
 }
 
 .hour,
