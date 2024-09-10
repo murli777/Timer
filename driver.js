@@ -23,3 +23,5 @@ function driver(number, unitName) {
     segmentElement.classList.add("segLit");
   });
 }
+
+export default driver;

@@ -1,3 +1,6 @@
+import driver from "./driver.js";
+import { convertFromSeconds } from "./helpers.js";
+
 function createDigit(unitName, digitName) {
   const segments = ["a", "b", "c", "d", "e", "f", "g"];
   const containerName = `#${unitName}`;
@@ -42,8 +45,6 @@ function driveDigits(time) {
   minutes = String(minutes);
   seconds = String(seconds);
 
-  console.log(seconds);
-
   for (let i = 0; i < hours.length; i++) {
     const digitName = `hour${i}`;
     driver(hours[i], digitName);
@@ -57,3 +58,5 @@ function driveDigits(time) {
     driver(seconds[i], digitName);
   }
 }
+
+export default driveDigits;

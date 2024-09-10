@@ -1,7 +1,10 @@
+import driveDigits from "./Digit.js";
+import { clearState, handleMessages } from "./helpers.js";
+import { toast } from "./app.js";
+
 const timerCallbacks = {
   onStart({ message, type }) {
     handleMessages(message, type, toast);
-    // convertFromSeconds(time);
   },
   onTick({ time }) {
     clearState();
@@ -11,3 +14,5 @@ const timerCallbacks = {
     clearState();
   },
 };
+
+export default timerCallbacks;

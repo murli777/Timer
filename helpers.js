@@ -51,3 +51,5 @@ function convertFromSeconds(timeInSeconds) {
     seconds,
   };
 }
+
+export {clearState, handleMessages, convertFromSeconds};
