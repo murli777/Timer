@@ -1,0 +1,106 @@
+.seven-segment {
+  width: 120px;
+  height: 180px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.segment {
+  border: 10px solid rgba(66, 66, 66, 0.25);
+  width: 0;
+  height: 46px;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.segLit {
+  border-color: rgb(255, 255, 255);
+}
+
+.segment::before,
+.segment::after {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent;
+  position: absolute;
+  content: "";
+}
+.seg_c::before,
+.seg_f::before,
+.seg_g::before {
+  border-left-width: 0;
+  border-right-color: inherit;
+  top: -10px;
+  left: -20px;
+}
+
+.seg_c::after,
+.seg_f::after,
+.seg_g::after {
+  border-right-width: 0;
+  border-left-color: inherit;
+  top: -10px;
+  right: -20px;
+}
+
+.seg_a::before,
+.seg_b::before,
+.seg_d::before,
+.seg_e::before {
+  border-top-width: 0;
+  border-bottom-color: inherit;
+  top: -20px;
+  left: -10px;
+}
+
+.seg_a::after,
+.seg_b::after,
+.seg_d::after,
+.seg_e::after {
+  border-bottom-width: 0;
+  border-top-color: inherit;
+  bottom: -20px;
+  left: -10px;
+}
+
+.seg_c,
+.seg_f,
+.seg_g {
+  width: 56px;
+  height: 0;
+}
+
+.seg_a,
+.seg_b {
+  right: 10px;
+}
+
+.seg_d,
+.seg_e {
+  left: 10px;
+}
+
+.seg_g {
+  top: 80px;
+}
+
+.seg_c {
+  bottom: 10px;
+}
+
+.seg_f {
+  top: 10px;
+}
+
+.seg_a,
+.seg_e {
+  top: 32px;
+}
+
+.seg_b,
+.seg_d {
+  bottom: 32px;
+}
