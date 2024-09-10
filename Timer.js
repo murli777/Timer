@@ -1,4 +1,4 @@
-class Timer {
+export default class Timer {
   constructor(durationInput, startBtn, pauseBtn, resetBtn, timerCallbacks) {
     this.durationInput = durationInput;
     this.startBtn = startBtn;
@@ -89,8 +89,6 @@ class Timer {
 
   converToSeconds(timeInput) {
     const splittedTime = this.splitTime(timeInput);
-    console.log("Splitted Time:" + splittedTime);
-
     const seconds = Number(splittedTime[2]);
     const minuteToSecond = Number(splittedTime[1] * 60);
     const hourToSecond = Number(splittedTime[0] * 3600);
